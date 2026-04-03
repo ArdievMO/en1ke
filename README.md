@@ -39,10 +39,10 @@ checkstyle {
 Для билда необходимо прохождение checkstyle. В этом стейдже собирается сам проект функцией: "./gradlew clean build --stacktrace --info --build-cache"
 Так же с указанием флага "expire_in: 1 day" собранные артифакты хранятся  сутки.
 Затем замоканы стейджи тестов и деплоя, которые не пройдут без пройденного билда. При запуске пайплайна не прошел первый стейдж.
-![checkstyle]()
+![checkstyle](https://github.com/ArdievMO/en1ke/tree/main/images/checkstyle.png)
 
 После исправления был пройден весь пайплайн.
-![pipeline]()
+![pipeline](https://github.com/ArdievMO/en1ke/tree/main/images/pipeline.png)
 
 1.3. Скрипт
 
@@ -65,7 +65,7 @@ checkstyle {
         - получает информацию о задаче из описания MR, а так же закрыт ли MR фича-ветки
 
 Выглядит в MR эпика это так:
-![mr]()
+![mr](https://github.com/ArdievMO/en1ke/tree/main/images/mr.png)
 
 1.4. Тесты
 
@@ -83,7 +83,7 @@ https://faq-ru.kaiten.site/2bdeac34-1433-457e-8bf9-54f64b4c2349 <br>
 
 К проекту дабавлена платформа для отслеживания задач - Kaiten. На платформе созданны задачи для кажой фичи ветки и так же родительская задача для эпик ветки. Интеграция происходит путем упоминания номера задачи при коммите в гитлаб, таким образом в задаче появляется коментарий с коммитом и ссылка на проект.
 Пример задачи предоставлен на скриншоте:
-![kaiten]()
+![kaiten](https://github.com/ArdievMO/en1ke/tree/main/images/kaiten.png)
 
 # **Лабораторная работа № 3**
 <br>Тесты.
@@ -95,4 +95,4 @@ pipeline script:  <br>
 - ./gradlew integrationTest<br>
 
 Все тесты пройдены: <br>
-![tests]()
+![tests](./images/pipeline_test.png)
