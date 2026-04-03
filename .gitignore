@@ -1,0 +1,21 @@
+.o
+.txt
+.ttf
+.otf
+
+.gitattributes
+
+/app/build
+/build
+/obj
+/.git
+
+*.ttf
+*.otf
+*.dll
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build

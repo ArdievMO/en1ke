@@ -1,0 +1,51 @@
+stages:
+  - checkstyle
+  - build
+  - test
+  - deploy
+  - update_epic
+
+checkstyle:
+  stage: checkstyle
+  script:
+    - echo "checkstyle"
+    - ./gradlew checkstyleMain
+    - python main.py $url $gl_token $project_id
+
+build:
+  needs:
+    - checkstyle
+  stage: build
+  script:
+    - echo "Build"
+    - ./gradlew.bat assemble --stacktrace --info --build-cache -x checkstyleMain
+  artifacts:
+    paths:
+      - app/build/libs
+    expire_in: 1 day
+
+test:
+  dependencies:
+    - build
+  allow_failure: true
+  stage: test
+  script:
+    - echo "Test"
+    - ./gradlew test
+    - ./gradlew uitest
+    - ./gradlew integrationTest
+
+deploy:
+  dependencies:
+    - build
+  stage: deploy
+  script:
+    - echo "Deploy"
+
+update_epic:
+    stage: update_epic
+    script:
+        - echo "update epic"
+        - python commits5.py $url $gl_token $project_id
+    rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
